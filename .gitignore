@@ -1,3 +1,6 @@
 
 *.xcworkspacedata
 *.xcuserstate
+*.plist
+*.xcplayground
+
