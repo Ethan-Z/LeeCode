@@ -19,29 +19,32 @@ import UIKit
  说明:
  
  所有输入只包含小写字母 a-z 。
-
+ 
  */
 
 
 
 func longestCommonPrefix(_ strs: [String]) -> String {
     
-    let firstStr =  strs.first!
-    
-    var prefix = ""
-    
-    for (index, char) in firstStr.enumerated(){
-    
-        for(index2, str) in str
-        
-        
-        
+    guard let firstStr = strs.first else {
+        return ""
     }
     
+    var prefix = ""
+    loopOutSide: for char in firstStr{
+        prefix = prefix + String(char)
+        for str in strs.dropFirst(){
+            
+            if !str.hasPrefix(prefix){
+                
+                prefix = String(prefix.dropLast())
+                break loopOutSide
+            }
+        }
+    }
     
-    
-    
-    
-    
-    return ""
+    return prefix
 }
+
+
+longestCommonPrefix([])
