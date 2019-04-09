@@ -32,18 +32,22 @@ import UIKit
  E C   I H   N
  T     S     G
  
+ */
+
+
+//角标变化情况是
+/*
 0    6       12     18
 1  5 7    11 13   17
 2 4  8 10    14 16
 3    9       15
- 
- */
+*/
 
 //注意到 下标刚好是 2*numRows-2 作为一个周期. 所以只要知道 index % (2*numRows-2) 到对应数组的通项公式即可.
 
 func convert(_ s: String, _ numRows: Int) -> String {
     
-    if s.count <= 1 || numRows <= 1{
+    if s.count <= 2 || numRows <= 1{
         return s
     }
     
@@ -59,10 +63,7 @@ func convert(_ s: String, _ numRows: Int) -> String {
         }
     }
     var result = ""
-    for i in 0..<numRows{
-        print(strArr[i])
-        result = result + strArr[i]
-    }
+    strArr.forEach {result += $0}
     return result
 }
 
