@@ -32,7 +32,6 @@ import UIKit
  E C   I H   N
  T     S     G
  
--2
 0    6       12     18
 1  5 7    11 13   17
 2 4  8 10    14 16
@@ -40,34 +39,38 @@ import UIKit
  
  */
 
+//注意到 下标刚好是 2*numRows-2 作为一个周期. 所以只要知道 index % (2*numRows-2) 到对应数组的通项公式即可.
 
 func convert(_ s: String, _ numRows: Int) -> String {
     
-    var charArr : [[Character]] = []
-    for _ in 0..<numRows{
-        charArr.append([])
+    if s.count <= 1 || numRows <= 1{
+        return s
     }
+    
+    var strArr : [String] = Array(repeating: "", count: numRows)
     for (index, char) in s.enumerated(){
-        
-        let index2 = index % (numRows + numRows - 2)
+        let index2 = index % (numRows*2 - 2)
         print("index2 = \(index2)")
         if(index2 < numRows){
-            charArr[index2].append(char)
-            print(charArr[index2])
+            strArr[index2].append(char)
+            print(strArr[index2])
         }else{
-            charArr[index2 - numRows].append(char)
+            strArr[(numRows*2 - 2) - index2].append(char)
         }
     }
-    
-    
     var result = ""
     for i in 0..<numRows{
-        print(charArr[i])
-        result = result + String(charArr[i])
+        print(strArr[i])
+        result = result + strArr[i]
     }
-
     return result
 }
 
-
 convert("LEETCODEISHIRING",4)
+"LDREOEIIECIHNTSG"
+
+convert("LEETCODEISHIRING",3)
+"LCIRETOESIIGEDHN"
+
+convert("A",1)
+
