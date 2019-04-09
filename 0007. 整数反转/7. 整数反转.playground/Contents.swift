@@ -59,8 +59,8 @@ func reverse2(_ x: Int) -> Int {
 }
 
 Int32.max
-
+reverse(123)
 reverse(1534236469)
 
-
+reverse2(123)
 reverse2(1534236469)
